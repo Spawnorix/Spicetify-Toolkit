@@ -1,0 +1,20 @@
+{
+  "name": "spawn-s-toolkit-spicetify",
+  "displayName": "Spawn's Toolkit",
+  "description": "Spawn's Toolkit for Spotify: themes, backgrounds and an ad blocker, as one Spicetify extension",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node esbuild.mjs",
+    "watch": "node esbuild.mjs --watch",
+    "apply": "node esbuild.mjs && spicetify config extensions spawnsToolkit.js && spicetify apply && node scripts/install-backgrounds.mjs",
+    "check": "tsc --noEmit",
+    "backgrounds": "node scripts/install-backgrounds.mjs"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.12",
+    "esbuild": "^0.25.0",
+    "typescript": "^5.6.3"
+  }
+}

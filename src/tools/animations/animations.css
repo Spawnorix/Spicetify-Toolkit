@@ -1,0 +1,187 @@
+:root {
+    --spawn-ease: cubic-bezier(0.2, 0.9, 0.25, 1);
+    --spawn-anim-accent: var(--spawn-bright, var(--spice-button, #1db954));
+}
+
+
+.spawn-slider {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 101;
+    pointer-events: none;
+    border-radius: 2px;
+    background: var(--spawn-anim-accent);
+    box-shadow: 0 0 10px var(--spawn-anim-accent), 0 0 2px var(--spawn-anim-accent);
+    opacity: 0;
+    transition: opacity var(--spawn-quick) ease;
+}
+
+.spawn-slider.spawn-shown {
+    opacity: 1;
+}
+
+.spawn-pill {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    pointer-events: none;
+    border-radius: 8px;
+    background: color-mix(in srgb, var(--spawn-anim-accent) 13%, transparent);
+    opacity: 0;
+
+    transition: transform var(--spawn-speed) var(--spawn-spring), opacity var(--spawn-quick) ease;
+    will-change: transform;
+}
+
+.spawn-pill.spawn-shown {
+    opacity: 1;
+}
+
+.spawn-pill.spawn-instant {
+    transition: opacity var(--spawn-quick) ease;
+}
+
+.spawn-ripple-clip {
+    position: fixed;
+    z-index: 100001;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.spawn-ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: currentcolor;
+    opacity: 0.22;
+    pointer-events: none;
+}
+
+
+:is(a, [role="button"], [role="tab"], [role="option"], [role="row"], [role="menuitem"], [role="menuitemcheckbox"], [role="menuitemradio"]) {
+    transition: background-color var(--spawn-quick) ease, color var(--spawn-quick) ease, opacity var(--spawn-quick) ease, border-color var(--spawn-quick) ease;
+}
+
+button {
+    transition: background-color var(--spawn-quick) ease, color var(--spawn-quick) ease, opacity var(--spawn-quick) ease, scale var(--spawn-quick) var(--spawn-spring), box-shadow var(--spawn-speed) ease, translate var(--spawn-speed) var(--spawn-spring) !important;
+}
+
+button:active:not([role="switch"], :disabled) {
+    scale: 0.94;
+}
+
+button[aria-label] svg {
+    transition: scale var(--spawn-speed) var(--spawn-spring), color var(--spawn-quick) ease;
+}
+
+button[aria-label]:hover:not(:disabled) svg {
+    scale: 1.12;
+}
+
+input,
+textarea,
+[role="textbox"],
+[role="combobox"] {
+    transition: border-color var(--spawn-quick) ease, outline-color var(--spawn-quick) ease, background-color var(--spawn-quick) ease, box-shadow var(--spawn-speed) ease;
+}
+
+[role="switch"],
+[role="checkbox"],
+[role="radio"] {
+    transition: background-color var(--spawn-quick) ease, border-color var(--spawn-quick) ease, scale var(--spawn-quick) var(--spawn-spring);
+}
+
+[data-encore-id="card"] img {
+    transition: scale var(--spawn-slow) var(--spawn-spring);
+}
+
+[data-encore-id="card"]:hover img {
+    scale: 1.03;
+}
+
+
+[role="menu"],
+[role="tooltip"],
+[role="dialog"] {
+    animation: spawn-pop var(--spawn-speed) var(--spawn-spring);
+}
+
+[role="menu"] > li:nth-child(1) { animation: spawn-item-in var(--spawn-speed) var(--spawn-ease) 14ms backwards; }
+[role="menu"] > li:nth-child(2) { animation: spawn-item-in var(--spawn-speed) var(--spawn-ease) 28ms backwards; }
+[role="menu"] > li:nth-child(3) { animation: spawn-item-in var(--spawn-speed) var(--spawn-ease) 42ms backwards; }
+[role="menu"] > li:nth-child(4) { animation: spawn-item-in var(--spawn-speed) var(--spawn-ease) 56ms backwards; }
+[role="menu"] > li:nth-child(5) { animation: spawn-item-in var(--spawn-speed) var(--spawn-ease) 70ms backwards; }
+[role="menu"] > li:nth-child(6) { animation: spawn-item-in var(--spawn-speed) var(--spawn-ease) 84ms backwards; }
+[role="menu"] > li:nth-child(7) { animation: spawn-item-in var(--spawn-speed) var(--spawn-ease) 98ms backwards; }
+[role="menu"] > li:nth-child(8) { animation: spawn-item-in var(--spawn-speed) var(--spawn-ease) 112ms backwards; }
+[role="menu"] > li:nth-child(n + 9) { animation: spawn-item-in var(--spawn-speed) var(--spawn-ease) 126ms backwards; }
+
+[role="menu"] > li > button:active {
+    scale: 0.98;
+}
+
+
+html[data-spawn-polish] [role="menu"] {
+    background-color: color-mix(in srgb, var(--spice-main-elevated, #282828) 78%, transparent) !important;
+    box-shadow: 0 18px 50px rgb(0 0 0 / 50%), 0 2px 8px rgb(0 0 0 / 30%), inset 0 1px 0 rgb(255 255 255 / 6%) !important;
+    border-radius: 12px !important;
+}
+
+html[data-spawn-polish] [data-tippy-root]:has([role="menu"])::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: 12px;
+    background-color: color-mix(in srgb, var(--spice-main-elevated, #282828) 78%, transparent);
+    backdrop-filter: blur(22px) saturate(1.6);
+    pointer-events: none;
+}
+
+html[data-spawn-polish] [data-tippy-root] [role="menu"] {
+    background-color: transparent !important;
+}
+
+html[data-spawn-polish] [role="menu"] > li > button:not(:hover, :focus-visible) {
+    background-color: transparent !important;
+}
+
+html[data-spawn-polish] [role="menu"] > li > button {
+    border-radius: 6px !important;
+}
+
+html[data-spawn-polish] :is(input, textarea):focus {
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--spawn-anim-accent) 28%, transparent) !important;
+}
+
+html[data-spawn-polish] [role="textbox"],
+html[data-spawn-polish] input,
+html[data-spawn-polish] textarea {
+    caret-color: var(--spawn-anim-accent);
+}
+
+
+@keyframes spawn-pop {
+    from {
+        opacity: 0;
+        scale: 0.94;
+        translate: 0 -4px;
+    }
+}
+
+@keyframes spawn-item-in {
+    from {
+        opacity: 0;
+        translate: -6px 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0s !important;
+        transition-duration: 0s !important;
+    }
+}

@@ -1,0 +1,62 @@
+[role="menu"],
+[data-tippy-root] [role="dialog"] {
+    border-radius: var(--spawn-radius) !important;
+    border: 1px solid var(--spawn-border);
+    box-shadow: 0 12px 40px rgb(0 0 0 / 45%) !important;
+}
+
+[role="menuitem"],
+[role="menuitemcheckbox"],
+[role="menuitemradio"] {
+    border-radius: calc(var(--spawn-radius) * 0.7) !important;
+}
+
+#Desktop_LeftSidebar_Id,
+#Desktop_PanelContainer_Id,
+.main-view-container {
+    border-radius: var(--spawn-radius) !important;
+}
+
+[role="row"] > [data-testid="tracklist-row"],
+[data-testid="tracklist-row"],
+[data-encore-id="card"],
+[data-encore-id="listRow"] {
+    border-radius: calc(var(--spawn-radius) * 0.7) !important;
+}
+
+::selection {
+    background: var(--spawn-selection);
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 99px !important;
+    background-color: var(--spawn-scrollbar) !important;
+}
+
+.os-scrollbar-handle {
+    border-radius: 99px !important;
+    background: var(--spawn-scrollbar) !important;
+}
+
+#main-view div[style*="background-color"]:empty {
+    background-color: var(--spawn-accent) !important;
+}
+
+#main-view [style*="--background-base"] {
+    --background-base: color-mix(in srgb, var(--spawn-accent) 30%, var(--spawn-chat)) !important;
+    --background-base-min-contrast: var(--spawn-accent) !important;
+    --background-base-70: color-mix(in srgb, var(--spawn-accent) 40%, transparent) !important;
+    --background-highlight: color-mix(in srgb, var(--spawn-accent) 38%, var(--spawn-chat)) !important;
+    --background-press: color-mix(in srgb, var(--spawn-accent) 22%, var(--spawn-chat)) !important;
+    --background-elevated-base: color-mix(in srgb, var(--spawn-accent) 30%, var(--spawn-chat)) !important;
+    --background-elevated-highlight: color-mix(in srgb, var(--spawn-accent) 38%, var(--spawn-chat)) !important;
+    --background-elevated-press: color-mix(in srgb, var(--spawn-accent) 22%, var(--spawn-chat)) !important;
+    --background-tinted-base: color-mix(in srgb, var(--spawn-accent) 30%, transparent) !important;
+    --background-tinted-highlight: color-mix(in srgb, var(--spawn-accent) 40%, transparent) !important;
+    --background-tinted-press: color-mix(in srgb, var(--spawn-accent) 22%, transparent) !important;
+    --text-subdued: var(--spice-subtext) !important;
+    --essential-subdued: var(--spice-subtext) !important;
+    --decorative-subdued: var(--spice-subtext) !important;
+    --text-bright-accent: var(--spawn-bright) !important;
+    --essential-bright-accent: var(--spawn-bright) !important;
+}

@@ -1,0 +1,74 @@
+.spawn-background-frame {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    contain: paint;
+}
+
+.spawn-background {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+    will-change: opacity;
+}
+
+.spawn-background > video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+html[data-spawn-bg="behind"] .spawn-background-frame {
+    z-index: 0;
+}
+
+html[data-spawn-bg="behind"] body {
+    background: var(--spawn-sidebar, #000) !important;
+}
+
+html[data-spawn-bg="behind"] {
+    --spawn-panel: color-mix(in srgb, var(--spawn-sidebar, #000) var(--spawn-card-darkness, 45%), transparent);
+}
+
+html[data-spawn-bg="behind"] .Root > div:has(> #global-nav-bar),
+html[data-spawn-bg="behind"] #global-nav-bar,
+html[data-spawn-bg="behind"] .Root div:has(> [data-testid="now-playing-bar"]) {
+    background: var(--spawn-panel) !important;
+}
+
+html[data-spawn-bg="behind"] #Desktop_LeftSidebar_Id,
+html[data-spawn-bg="behind"] #main-view,
+html[data-spawn-bg="behind"] .Root > div > div:has(#Desktop_PanelContainer_Id):not(:has(#main-view)) > div {
+    background: var(--spawn-panel) !important;
+}
+
+html[data-spawn-bg="behind"] #Desktop_LeftSidebar_Id > nav > div,
+html[data-spawn-bg="behind"] #Desktop_LeftSidebar_Id > nav > div > div,
+html[data-spawn-bg="behind"] #Desktop_PanelContainer_Id {
+    background: transparent !important;
+}
+
+html[data-spawn-bg="behind"] :is(#main-view, #Desktop_LeftSidebar_Id, #Desktop_PanelContainer_Id),
+html[data-spawn-bg="behind"] :is(#main-view, #Desktop_LeftSidebar_Id, #Desktop_PanelContainer_Id) .encore-base-set {
+    --background-base: transparent !important;
+}
+
+html[data-spawn-bg="behind"] #main-view div[style*="background-color"]:empty {
+    mask-image: linear-gradient(#000, transparent);
+}
+
+html[data-spawn-bg="behind"] [data-testid="NPV_Panel_OpenDiv"] > div {
+    background-color: color-mix(in srgb, var(--spawn-sidebar, #000) 55%, transparent) !important;
+}
+
+
+html[data-spawn-bg="over"] .spawn-background-frame {
+    z-index: 100000;
+    will-change: transform;
+}
